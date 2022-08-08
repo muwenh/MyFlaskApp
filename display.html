@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      
+      <h3>  
+         <a href = "{{ url_for('display') }}">Orders</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      <h3>Orders (<a href = "{{ url_for('new') }}">Add Order
+         </a>)</h3>
+      
+      <table>
+         <thead>
+            <tr>
+               <th>Order Id</th>
+               <th>Product Id</th>
+               <th>Customer Id</th>
+               <th>Quantity</th>
+               <th>Price Each</th>
+               <th>Order Date</th>
+               <th>Order Status</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for order in orders %}
+               <tr>
+                  <td>{{ order.orderId }}</td>
+                  <td>{{ order.productId }}</td>
+                  <td>{{ order.customerId }}</td>
+                  <td>{{ order.quantity }}</td>
+                  <td>{{ order.priceEach }}</td>
+                  <td>{{ order.orderDate }}</td>
+                  <td>{{ order.orderStatus }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
